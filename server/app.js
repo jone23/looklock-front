@@ -9,12 +9,14 @@ var usersRouter = require('./routes/users');
 const bodyParser = require('body-parser');
 const { default: mongoose } = require('mongoose');
 
+var cors = require('cors')
+
 var app = express();
 const port = 3001;
 app.listen(port, ()=> {
   console.log(`server starts at : http:localhost:${port}`);
 })
-
+app.use(cors());
 //body-parser setup
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
