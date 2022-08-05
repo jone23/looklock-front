@@ -11,6 +11,8 @@ import Project from './pages/Project';
 import Swap from './pages/Swap';
 import MyStatus from './pages/MyStatus';
 import Governance from './pages/Governance';
+import About from './pages/About';
+import Admin from './pages/Admin';
 
 export default function App() {
   const [accounts, setAccounts] = useState([]);
@@ -22,6 +24,8 @@ export default function App() {
             <Route index element={<Main />} />
             <Route path="project" element={<Project />} />
             <Route path="swap" element={<Swap />} />
+            <Route path="about" element={<About accounts={accounts} setAccounts={setAccounts}></About>} />
+            <Route path="admin" element={<Admin accounts={accounts} setAccounts={setAccounts}></Admin>} />
             <Route path="mystatus" element={<MyStatus />} />
             <Route path="governance" element={<Governance />} />
             <Route path="*" element={<NoPage />} />

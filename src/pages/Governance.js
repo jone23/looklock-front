@@ -1,5 +1,11 @@
+import Footer from '../component/Footer';
+
 const Governance = () => {
-    return <h1>Governance</h1>;
-  };
+  return (
+    <body>
+      <h1>Governance</h1>
+      <Footer/>
+    </body>
+  )  };
   
   export default Governance;

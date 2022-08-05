@@ -1,17 +1,18 @@
 #navbar {
     background-color: transparent;
     display: flex;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     width: 100%;
     height: max-content;
+    margin-top: -100px;
     padding-top: 20px;
     padding-bottom: 20px;
     overflow: hidden;
     justify-content: space-between;
     vertical-align: middle;
-    z-index: 999;
+    z-index: 1;
 }
 
 /* LOGO */
@@ -22,6 +23,7 @@
     margin-left: 40px;
     margin-right: 40px;
     align-self: center;
+    z-index: 1;
 }
 
 /* +++++++ */
@@ -30,6 +32,7 @@
 
 .gnb-box {
     display: flex;
+    z-index: 1;
 }
 
 ul {
@@ -38,6 +41,10 @@ ul {
     display: inline-block;
     align-self: center;
     font-weight: 700;
+}
+
+#links {
+    margin-top: 20px;
 }
 
 ul li {

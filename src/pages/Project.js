@@ -1,5 +1,13 @@
+import Footer from '../component/Footer';
+
+
 const Project = () => {
-    return <h1>Project</h1>;
+    return (
+      <body>
+        <h1>Project</h1>
+        <Footer/>
+      </body>
+    )
   };
   
   export default Project;

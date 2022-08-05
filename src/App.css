@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+/* Hide Scrollbar */
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+::selection {
+  /* background: linear-gradient(102.13deg, #9D21FF -18.49%, #2254D3 131.68%); */
+  background: #9D21FF;
+  color: #fff;
+}
+
