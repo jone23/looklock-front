@@ -1,0 +1,97 @@
+footer{
+    width: 100%;
+    height: 350px;
+    position : relative;
+    background: #181825;
+    margin-bottom: 50px;
+}
+
+
+#footer-logo {
+    margin: 0;
+}
+
+.upper-box {
+    /* border: 3px solid red; */
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 100px;
+    margin-bottom: 80px;
+}
+
+.lower-box {
+    /* border: 3px solid red; */
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px;
+}
+
+.left-box {
+    /* border: 3px solid yellow; */
+}
+
+.right-box {
+    /* border: 3px solid yellow; */
+}
+
+.link-box {
+    display: flex;
+    margin-top: 15px;
+}
+
+#links-left,
+#links-right {
+    display: flex;
+    flex-direction: column;
+    margin-right: 80px;
+}
+
+.link-box li {
+    color: #CDCDCD;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: left;
+}
+
+li :link {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+li :visited {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+li :hover {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+li :active {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+li:first-child {
+    margin-bottom: 20px;
+}
+
+#link-lockdrop,
+#link-governance {
+    font-weight: 700;
+}
+
+li:nth-child(2) {
+    margin-bottom: 10px;
+}
+
+#corporation {
+    margin-left: 20px;
+    color: #CDCDCD;
+}
+
+#contact-us {
+    font-weight: 400;
+}

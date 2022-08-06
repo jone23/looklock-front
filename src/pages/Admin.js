@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import Footer from '../component/Footer';
+
 
 const Admin = ({ accounts, setAccounts }) => {
     const isConnected = Boolean(accounts[0]);
@@ -13,11 +15,16 @@ const Admin = ({ accounts, setAccounts }) => {
     // }
 
     return (
-        <div class = 'About'>
-            <div>About us</div>     
-            <div>Look and Lock. Your chances are all here. </div>
+        <body>
+            <div class = 'About'>
+                <div>Admin</div>     
+                <div>Look and Lock. Your chances are all here. </div>
 
-        </div>
+            </div>
+            <Footer />
+        </body>
         
     )
 }
+
+export default Admin;

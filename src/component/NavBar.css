@@ -1,0 +1,98 @@
+#navbar {
+    background-color: transparent;
+    display: flex;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    margin-top: -100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: hidden;
+    justify-content: space-between;
+    vertical-align: middle;
+    z-index: 1;
+}
+
+/* LOGO */
+
+.logo {
+    width: 200px;
+    height: auto;
+    margin-left: 40px;
+    margin-right: 40px;
+    align-self: center;
+    z-index: 1;
+}
+
+/* +++++++ */
+/* GNB BOX */
+/* +++++++ */
+
+.gnb-box {
+    display: flex;
+    z-index: 1;
+}
+
+ul {
+    list-style: none;
+    padding-inline-start: 0;
+    display: inline-block;
+    align-self: center;
+    font-weight: 700;
+}
+
+#links {
+    margin-top: 20px;
+}
+
+ul li {
+    float: left;
+    margin-right: 40px;
+}
+
+ul li:last-child {
+    margin-right: 0;
+}
+
+#links :link {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+#links :visited {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+#links :hover {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+#links :active {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+/* +++++++++++++ */
+/* WALLET BUTTON */
+/* +++++++++++++ */
+
+.wallet {
+    margin: 0 20px;
+    align-self: center;
+}
+
+.wallet-btn {
+    margin: 0 50px;
+    padding: 13px 35px;
+    border-radius: 20px;
+    border: none;
+    color: #FFF;
+    background: linear-gradient(to bottom right, #9D21FF, #2254D3);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -1,0 +1,46 @@
+/* ++++++++ */
+/* ABOUT US */
+/* ++++++++ */
+
+.about-wrapper {
+    /* padding-left: 300px; */
+    text-align: left;
+}
+
+.about-intro,
+.about-lolo-intro,
+.admin-container {
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+#about,
+#admin {
+    position: relative;
+    font-weight: 700;
+    font-size: 20px;
+    color: #CDCDCD;
+}
+
+#about-title {
+    margin-top: 80px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 45px;
+    color: #FFF;
+}
+
+.ratio-container {
+    margin: 80px 0;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    padding-left: 300px;
+    padding-right: 300px;
+    background: linear-gradient(102.13deg, rgba(157, 33, 255, 0.6) -18.49%, rgba(34, 84, 211, 0.6) 131.68%);
+    text-align: center;
+}
+
+.register-wrapper {
+    text-align: center;
+    padding: 100px 0;
+}
