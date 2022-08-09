@@ -1,30 +1,9 @@
 import Footer from "../component/Footer";
 import './MyStatus.css';
+import PopupDom from "./PopupDom";
+import Lockdrop from "./Lockdrop";
 
 const MyStatus = () => {
-    constructor(props) {
-      super(props);
-        
-        this.state = {
-            isOpenPopup: false,
-        }
- 
-        this.openPopup = this.openPopup.bind(this);
-        this.closePopup = this.closePopup.bind(this);
-    }
-
-    const openPopup = () => {
-      this.setState({
-          isOpenPopup: true,
-      })
-    } 
-
-    const closePopup = () => {
-        this.setState({
-            isOpenPopup: false,
-        })
-    }
-
     return (
       <body>
         <div class='mystatus-container'>
@@ -94,14 +73,10 @@ const MyStatus = () => {
             </div>
           </div>
           <div class='lockdrop-popup'>
-            <button class="purple-gradient-btn" type="button" id="popupDom" onClick={openPopup}>
+            <button class="purple-gradient-btn" type="button" id="popupDom">
               Lock Up
             </button>
-            {state.isOpenPopup &&
-              <PopupDom>
-                <Lockdrop onClose={closePopup}/>
-              </PopupDom>
-            }
+
           </div>
          
           <div class='info-wrapper'>
