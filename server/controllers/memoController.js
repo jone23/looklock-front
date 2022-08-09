@@ -4,6 +4,7 @@ const Memo = require("../models/memo.js");
 const memo = {
     readAll: async (req, res) => {
         const memos = await Memo.findAll();
+        console.log("메모들 : ", memos);
         try {
             if(!memos.length)
                 return res.status(404).send({
