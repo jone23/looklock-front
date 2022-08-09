@@ -8,7 +8,7 @@ const MyStatus = () => {
       <body>
         <div class='mystatus-container'>
           <div>
-            <img id="profile-img" src={require('../assets/profile.png')} alt="chain-left"/>
+            <img id="profile-img" src={require('../Assets/profile.png')} alt="chain-left"/>
           </div>
           <div class='status-wrapper'>
             <h1>ZELO</h1>
@@ -68,7 +68,7 @@ const MyStatus = () => {
             <div>
               <h3>Rewards</h3>
               <div>
-                <img id="reward-img" src={require('../assets/reward.png')} alt="reward-img"/>
+                <img id="reward-img" src={require('../Assets/reward.png')} alt="reward-img"/>
               </div>
             </div>
           </div>

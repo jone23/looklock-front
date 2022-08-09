@@ -12,7 +12,7 @@ const Footer = () => {
                 <div class='left-box'>
                     <div class='logo' id='footer-logo'>
                         <Link to="/">
-                            <img src={require("../assets/header-logo.png")} alt="Looklock logo"/>
+                            <img src={require("../Assets/header-logo.png")} alt="Looklock logo"/>
                         </Link>
                     </div>
                 </div>

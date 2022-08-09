@@ -21,7 +21,7 @@ const NavBar = ({ accounts, setAccounts }) => {
             {/* Left Side - Logo */}
             <div class='logo'>
                 <Link to="/">
-                    <img src={require("../assets/header-logo.png")} alt="Looklock logo"/>
+                    <img src={require("../Assets/header-logo.png")} alt="Looklock logo"/>
                 </Link>
             </div>
 

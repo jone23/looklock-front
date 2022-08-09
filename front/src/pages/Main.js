@@ -7,8 +7,8 @@ const Main = () => {
       <body>
         <div id='wrapper'>
 
-          <img id="chain-left" src={require('../assets/chain-left.png')} alt="chain-left"/>
-          <img id="chain-right" src={require('../assets/chain-right.png')} alt="chain-right"/>
+          <img id="chain-left" src={require('../Assets/chain-left.png')} alt="chain-left"/>
+          <img id="chain-right" src={require('../Assets/chain-right.png')} alt="chain-right"/>
           <div class="section main-wrapper">
             <h1 id='main-title'>
               Ultimate place
