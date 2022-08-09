@@ -1,5 +1,7 @@
 import Footer from "../component/Footer";
 import './MyStatus.css';
+import PopupDom from "./PopupDom";
+import Lockdrop from "./Lockdrop";
 
 const MyStatus = () => {
     return (
@@ -70,9 +72,13 @@ const MyStatus = () => {
               </div>
             </div>
           </div>
-          <button class="purple-gradient-btn">
-            Lock Up
-          </button>
+          <div class='lockdrop-popup'>
+            <button class="purple-gradient-btn" type="button" id="popupDom">
+              Lock Up
+            </button>
+
+          </div>
+         
           <div class='info-wrapper'>
             <div id='info'>
               <h3>Project<br/>Information</h3>
