@@ -22,7 +22,7 @@ const Main = () => {
               Go To Lockdrop
             </button>
             <div class="statistics">
-              <ul>
+              <ul id='stats'>
                 <li>
                   <p class="txt-big">1.57</p>
                   <p class="txt-small">$LOLO</p>

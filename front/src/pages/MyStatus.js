@@ -2,80 +2,101 @@ import Footer from "../component/Footer";
 import './MyStatus.css';
 import PopupDom from "./PopupDom";
 import Lockdrop from "./Lockdrop";
+
+import Timer from '../components/Timer';
+import BarGraph from '../components/BarGraph';
+
+
 const MyStatus = () => {
     return (
       <div>
         <div class='mystatus-container'>
-          <div>
-            <img id="profile-img" src={require('../Assets/profile.png')} alt="chain-left"/>
-          </div>
-          <div class='status-wrapper'>
-            <h1>ZELO</h1>
-            <div class='phase-wrapper'>
+          <div class='profile-wrapper'>
+            <div class='user-wrapper'>
               <div>
-                {/* TIMER */}
-                <div id='timer'>
-                  <span>
-                    PHASE 1
-                  </span>
-                  <span>
-                    TIME LEFT IN THIS PAHSE
-                  </span>
-                  <div>
-                    TIMER HERE
+                <img id="profile-img" src={require('../Assets/profile.png')} alt="chain-left"/>
+              </div>
+              <div id='status-wrapper'>
+                <h1>ZELO</h1>
+                <div class='phase-container'>
+                  <div class='phase-wrapper'>
+                    {/* TIMER */}
+                    <div id='timer'>
+                      <span>
+                        PHASE 1
+                      </span>
+                      <span>
+                        TIME LEFT IN THIS PAHSE
+                      </span>
+                      <div>
+                        <Timer/>
+                      </div>
+                    </div>
+
+                    {/* PHASE 1, 2 */}
+                    <div id='phases'>
+                      <div>
+                        <span>
+                          now
+                        </span>
+                        <span>
+                          Phase 1
+                        </span>
+                        <span>
+                          2022.04.01 ~ 04.09
+                        </span>
+                      </div>
+                      <div>
+                        <span class='hidden-txt'>
+                          now
+                        </span>
+                        <span>
+                          Phase 2
+                        </span>
+                        <span>
+                          2022.04.10 ~ 04.15
+                        </span>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class='bar-graph'>
+                    {/* Bar Graph */}
+                    <BarGraph />
                   </div>
                 </div>
-
-                {/* PHASE 1, 2 */}
-                <div id='phases'> 
-                  <span>
-                    Phase 1
-                  </span>
-                  <span>
-                    2022.04.01 ~ 04.09
-                  </span>
-                  <span>
-                    Phase 2
-                  </span>
-                  <span>
-                    2022.04.10 ~ 04.15
-                  </span>
+              </div>
+            </div>
+            <div class='rewards-wrapper'>
+              <div class='rules-container'>
+                <h3>Rules</h3>
+                <div class='rules-content'>
+                  <ul id='rules-header'>
+                    <li>project</li>
+                    <li>date</li>
+                    <li>allocated amount</li>
+                    <li>participation rate</li>
+                  </ul>
+                  <ul id='rules-body'>
+                    <li>Alex</li>
+                    <li>22.04.01~22.04,09</li>
+                    <li>3,000,000,000</li>
+                    <li>70%</li>
+                  </ul>
                 </div>
               </div>
-              <div>
-                {/* Bar Graph */}
-                BAR GRAPH HERE
+              <div class='rewards-container'>
+                <h3>Rewards</h3>
+                <div>
+                  <img id="reward-img" src={require('../Assets/reward.png')} alt="reward-img"/>
+                </div>
               </div>
             </div>
-          </div>
-          <div class='rewards-wrapper'>
-            <div>
-              <h3>Rules</h3>
-              <ul id='reward-header'>
-                <li>project</li>
-                <li>date</li>
-                <li>allocated amount</li>
-                <li>participation rate</li>
-              </ul>
-              <ul id='reward-content'>
-                <li>Alex</li>
-                <li>22.04.01~22.04,09</li>
-                <li>3,000,000,000</li>
-                <li>70%</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Rewards</h3>
-              <div>
-                <img id="reward-img" src={require('../Assets/reward.png')} alt="reward-img"/>
-              </div>
-            </div>
-          </div>
-          <div class='lockdrop-popup'>
-            <button class="purple-gradient-btn" type="button" id="popupDom">
-              Lock Up
-            </button>
+            <div class='lockdrop-popup'>
+              <button class="purple-gradient-btn" type="button" id="popupDom">
+                Lock Up
+              </button>
 
+            </div>
           </div>
          
           <div class='info-wrapper'>
