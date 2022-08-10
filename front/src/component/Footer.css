@@ -49,9 +49,24 @@ footer{
 .link-box li {
     color: #CDCDCD;
     text-decoration: none;
+    list-style: none;
     font-weight: 400;
     font-size: 15px;
     text-align: left;
+}
+
+#contact-links {
+    list-style: none;
+    padding-inline-start: 0;
+    display: inline-block;
+    align-self: center;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+#contact-links > li {
+    float: left;
+    margin-right: 40px;
 }
 
 li :link {
@@ -74,7 +89,8 @@ li :active {
     text-decoration: none;
 }
 
-li:first-child {
+#links-left > li:first-child,
+#links-right > li:first-child {
     margin-bottom: 20px;
 }
 
@@ -83,7 +99,8 @@ li:first-child {
     font-weight: 700;
 }
 
-li:nth-child(2) {
+#links-left > li:nth-child(2),
+#links-right > li:nth-child(2) {
     margin-bottom: 10px;
 }
 

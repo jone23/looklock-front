@@ -68,6 +68,20 @@ p {
     margin-bottom: 150px;
 }
 
+#stats {
+    list-style: none;
+    padding-inline-start: 0;
+    display: inline-block;
+    align-self: center;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+#stats > li {
+    float: left;
+    margin-right: 40px;
+}
+
 /* +++++++++++++ */
 /* TOP3 PROJECTS */
 /* +++++++++++++ */
@@ -90,6 +104,7 @@ p {
 }
 
 .project-header ul li {
+    list-style: none;
     margin-right: 20px;
 }
 
@@ -119,8 +134,8 @@ p {
     height: 80px;
     margin: 20px 0px;
     padding: 30px;
-    /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(89.46deg, rgba(219, 172, 255, 0.2) 9.33%, rgba(78, 255, 223, 0.2) 96.25%); */
-    background: linear-gradient(89.46deg, #DBACFF 9.33%, #4EFFDF 96.25%);
+    background: linear-gradient(89.46deg, rgba(219, 172, 255, 0.15) 9.33%, rgba(78, 255, 223, 0.15) 96.25%);
+    /* background: linear-gradient(89.46deg, #DBACFF 9.33%, #4EFFDF 96.25%); */
     border-radius: 10px;
     color: #CDCDCD;
     font-weight: 500;

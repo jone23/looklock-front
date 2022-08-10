@@ -56,7 +56,7 @@ const Footer = () => {
                 <div class='right-box'>
                     {/* Right Side */}
                     <div>
-                        <ul>
+                        <ul id='contact-links'>
                             <li id='contact-us'>
                                 Contact us:
                             </li>

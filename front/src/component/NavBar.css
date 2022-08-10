@@ -35,24 +35,21 @@
     z-index: 1;
 }
 
-ul {
+#links {
     list-style: none;
     padding-inline-start: 0;
     display: inline-block;
     align-self: center;
     font-weight: 700;
+    margin-top: 5px;
 }
 
-#links {
-    margin-top: 20px;
-}
-
-ul li {
+#links > li {
     float: left;
     margin-right: 40px;
 }
 
-ul li:last-child {
+#links > li:last-child {
     margin-right: 0;
 }
 
