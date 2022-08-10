@@ -1,9 +1,9 @@
 import Footer from "../component/Footer";
 import './MyStatus.css';
+
 import Timer from '../components/Timer';
 import BarGraph from '../components/BarGraph';
-import PopupDom from "./PopupDom";
-import Lockdrop from "./Lockdrop";
+
 
 const MyStatus = () => {
     return (
