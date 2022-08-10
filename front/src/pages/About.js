@@ -34,7 +34,7 @@ const About = ({ accounts, setAccounts }) => {
                     <div class='text text16' id='about-ex'>
                         Examples of which features are powered by LookLock include:
                         <ul>
-                            <li>Grasping all **lockdrop projects at a glance.</li>
+                            <li>Grasping all lockdrop projects at a glance.</li>
                             <li>Simplifying the lockdrop procedure</li>
                             <li>Expose new projects to users interested in Lockdrop</li>
                         </ul>
