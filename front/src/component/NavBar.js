@@ -1,20 +1,53 @@
 import React from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import './NavBar.css';
+import axios from "axios";
+import reducer from '../utils/reducer';
 
-const NavBar = ({ accounts, setAccounts }) => {
+const NavBar = ({currentAccount, correctNetwork, connectWallet, changeNetwork}) => {
 
-    const isConnected = Boolean(accounts[0]);
+    const [state, dispatch] = useReducer(reducer, {
+        loading: false,
+        data: null,
+        error: null
+    });
 
-    async function connectAccount(){
-        if (window.ethereum) {
-            const accounts = await window.ethereum.request({
-                method: "eth_requestAccounts",
-            });
-            setAccounts(accounts);
+    const fetchUser = async (currentAccount) => {
+        if (currentAccount === '') {
+            console.log("no account yet!");
+            return
         }
-    }
+        dispatch({type : 'LOADING'});
+        try {
+            const response = await axios.get(
+                'http://localhost:3001/api/user', {params: {address: currentAccount}}
+            );
+            dispatch({type:'SUCCESS', data:response.data});
+        } catch (e) {
+            console.log(e.response.status);
+            if (e.response.status === 404) {
+                try {
+                  const response = await axios.post(
+                    'http://localhost:3001/api/user', {address: currentAccount}
+                  )
+                } catch (e) {
+                    dispatch({type:'ERROR', error:e})
+                }
+              }
+            dispatch({type :'ERROR', error:e})
+        }
+    };
+    
+    
+    useEffect(() => {
+    fetchUser(currentAccount);
+    }, [currentAccount]);
 
+    const {loading, data:user, error } = state;
+    if (loading) console.log("loading..");
+    if (error) return <div>요청한 데이터가 없습니다. </div>;
+    if (!user) return <div> no data </div>;
     return (
         <>
         <nav id="navbar">
@@ -38,19 +71,30 @@ const NavBar = ({ accounts, setAccounts }) => {
                         <Link to="/mystatus">MY STATUS</Link>
                     </li>
                     <li>
-                        <Link to="/governance">GOVERNANCE</Link>
+                        <Link to="/governance">PARTNER</Link>
                     </li>
+                    {(!!user[0] && user[0].isAdmin) ? (
+                    <li>
+                        <Link to="/governance">ADMIN</Link>
+                    </li>
+                    ) : <></>
+                    }
                 </ul>
                 {/* Connect */}
-                {isConnected ? (
-                    <div class="wallet">
-                        <p>Wallet Connected</p>
+                {currentAccount === '' ? (
+                    <div class= "wallet">
+                        <button class= "wallet-btn" onClick={connectWallet}>Connect Wallet</button>
                     </div>
-                ) : (
-                    <div class="wallet">
-                        <button class="wallet-btn" onClick={connectAccount}>Connect Wallet</button>
+                ) : !correctNetwork ? (
+                    <div class= "wallet">
+                        <button class= "wallet-btn"onClick={changeNetwork}>Change Network</button>
                     </div>
-                )}
+                ) : 
+                (
+                <div class= "wallet">
+                    <button disabled class = "wallet-btn">{currentAccount}</button>
+                </div>
+                )};
             </div>
         </nav>
         <Outlet/>

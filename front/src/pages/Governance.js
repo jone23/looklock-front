@@ -1,6 +1,6 @@
 import Footer from '../component/Footer';
 
-const Governance = () => {
+const Governance = ({currentAccount}) => {
   return (
     <body>
       <h1>Governance</h1>

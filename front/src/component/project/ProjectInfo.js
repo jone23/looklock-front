@@ -83,9 +83,9 @@ export const ProjectInfo= (props) => {
                       <span>
                         TIME LEFT IN THIS PAHSE
                       </span>
-                      <div>
+                      {/* <div>
                         <Timer/>
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* PHASE 1, 2 */}
