@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import reducer from "../../utils/reducer";
 import Timer from '../../components/Timer';
 import BarGraph from '../../components/BarGraph';
+import { dateFormatter } from "../../utils/dateFromatter";
 
 export const ProjectInfo= (props) => {
     const [state, dispatch] = useReducer(reducer, {
@@ -41,6 +42,24 @@ export const ProjectInfo= (props) => {
 
     }
 
+    const getPhase1Period = (project) => {
+        const startDate =  new Date(project.startDate);
+        const endDate = new Date(project.startDate);
+        endDate.setDate(endDate.getDate() + Number(project.phase1DueDate));
+
+        return dateFormatter(startDate)+ '~' + dateFormatter(endDate);
+    }
+
+    const getPhase2Period = (project) => {
+      const startDate =  new Date(project.startDate);
+      startDate.setDate(startDate.getDate() +( Number(project.phase1DueDate) +1));
+
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + Number(project.phase2DueDate));
+
+      return dateFormatter(startDate)+ '~' + dateFormatter(endDate);
+    }
+
     if (loading) console.log("loading..");
     if (error) return <div>요청한 데이터가 없습니다. </div>;
     if (!project) return <div> no data </div>;
@@ -72,25 +91,25 @@ export const ProjectInfo= (props) => {
                     {/* PHASE 1, 2 */}
                     <div id='phases'>
                       <div>
-                        <span>
+                        <span class = {getPhase(project[0])==="PHASE1" ? '' : 'hidden-txt'}>
                           now
                         </span>
                         <span>
                           Phase 1
                         </span>
                         <span>
-                          2022.04.01 ~ 04.09
+                          {getPhase1Period(project[0])}
                         </span>
                       </div>
                       <div>
-                        <span class='hidden-txt'>
+                        <span class = {getPhase(project[0])==="PHASE2" ? '' : 'hidden-txt'}>
                           now
                         </span>
                         <span>
                           Phase 2
                         </span>
                         <span>
-                          2022.04.10 ~ 04.15
+                        {getPhase2Period(project[0])}
                         </span>
                       </div> 
                     </div>
