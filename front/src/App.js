@@ -14,6 +14,7 @@ import Governance from './pages/Governance';
 import About from './pages/About';
 import Admin from './pages/Admin';
 import Register from './pages/Register';
+import Memo from "./components/Memo";
 
 export default function App() {
   const [accounts, setAccounts] = useState([]);

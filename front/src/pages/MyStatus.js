@@ -2,10 +2,9 @@ import Footer from "../component/Footer";
 import './MyStatus.css';
 import PopupDom from "./PopupDom";
 import Lockdrop from "./Lockdrop";
-
 const MyStatus = () => {
     return (
-      <body>
+      <div>
         <div class='mystatus-container'>
           <div>
             <img id="profile-img" src={require('../Assets/profile.png')} alt="chain-left"/>
@@ -146,7 +145,7 @@ const MyStatus = () => {
           </div>
         </div>
         <Footer/>
-      </body>
+      </div>
     )
   };
   
