@@ -1,45 +1,166 @@
+.swap-container {
+    display: flex;
+}
 .swap-graph {
     position: absolute;
-    display: flex;
-    left: 200px;
-    top: 248px;
-    width: 300px;
-    margin-left: 20px;
+    margin-left: 10%;
+    /* display: inline-flex; */
     flex-direction: row;
+    flex-wrap: wrap;
+    top: 250px;
 }
 
-.swap-info {
+#swap-graph-img {
+    width: 100%;
+}
+.swap-wrapper {
     position: absolute;
     display: flex;
-    left:848px;
-    top: 248px;
     flex-direction: row;
-    margin-left: 60px;
+    flex-wrap: wrap;
+    /* box */
+    height: 70%;
+    width: 29%;
+    left: 52%;
+    top: 248px;
+    border: none;
+    cursor: pointer;
+    padding: 12px 55px;
+    background: #23233F;
+    border-radius: 20px;
 }
 
-.purple-gradient-btn {
-    position: relative;
-    width: max-content;
+.swap-wrapper > h1 {
+    position: absolute;
+    top: 5%;
+}
+
+.to-from-wrapper {
+    margin-top: 40px;
+} 
+
+.token-wrapper {
+    position: absolute;
+    display: flex;
+    /* flex-direction: row; */
     margin: 30px 0;
     border: none;
     cursor: pointer;
     padding: 12px 55px;
-    border-radius: 15px;
-    border: none;
-    color: #FFF;
-    background: linear-gradient(to bottom right, #9D21FF, #2254D3);
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
+    background: #12122B;
+    border-radius: 20px;
+    left: 6%;
+    top: 10%;
+    width: 70%;
+    height: 18%;
 }
 
-#swap {
+.from-wrapper {
     position: absolute;
-    background-color: white;
-    top: 485px;
-    left: 38px;
+}
+
+.swap-txt {
+    font-size: 120%;
+    position: absolute;
+    left: 7%;
+    top: 8%;
+    /* display: inline-block; */
+}
+
+.from-token {
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .from-token > span {
+    position: absolute;
+    width: 60px;
+    top: 55px;
+    left: 30px; 
+} */
+
+.from-token > span > #swap-from-eth {
+    position: absolute;
+    width: 50px;
+    left: 8%;
+    top: 40%;
+}
+
+.from-token-name {
+    position: absolute;
+    left: 22%;
+    top: 45%;
+    font-size: 28px;
+}
+
+.amount-input {
+    position: absolute;
+    top: 45%;
+    right: 10px;
+    
+    margin-left: auto;
+    outline: none;
+}
+
+.amount-input > input {
+    width: 150px;
+    margin-right: 10px;
+    text-align: right;
+    color: #5B5B5B;
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+
+}
+
+.arrow-down {
+    position: absolute;
+    content: '';
+    border-top: 2px solid #A9A9A9;
+    border-right: 2px solid #A9A9A9;
+
+    transform: rotate(135deg);
+    width: 25px;
+    height: 25px;
+    top: 37%;
+    left: 50%;
+}
+
+.to-wrapper {
+    position: absolute;
+    top: 40%;
+}
+.to-token > span > #swap-to-lolo {
+    position: absolute;
+    width: 50px;
+    left: 8%;
+    top: 40%;
+}
+
+.to-token-name {
+    position: absolute;
+    left: 22%;
+    top: 45%;
+    font-size: 28px;
+}
+
+.amount-input to-amount {
+    width: 150px;
+    margin-right: 10px;
+    text-align: right;
+    color: #5B5B5B;
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+}
+
+#swap-btn {
+    position: absolute;
+    top: 80%;
+    left: 9.5%;
     right: 38px;
-    bottom: 50px;
-    width: 490px;
+    bottom: 1%;
+    width: 80%;
     height: 86px;
 }
