@@ -1,7 +1,5 @@
 import Footer from "../component/Footer";
 import './MyStatus.css';
-import PopupDom from "./PopupDom";
-import Lockdrop from "./Lockdrop";
 
 import Timer from '../components/Timer';
 import BarGraph from '../components/BarGraph';
