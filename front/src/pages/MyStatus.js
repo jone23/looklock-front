@@ -15,7 +15,7 @@ const MyStatus = () => {
                 <img id="profile-img" src={require('../Assets/profile.png')} alt="chain-left"/>
               </div>
               <div id='status-wrapper'>
-                <h1>ZELO</h1>
+                <h1 clas='token-name'>ZELO</h1>
                 <div class='phase-container'>
                   <div class='phase-wrapper'>
                     {/* TIMER */}
