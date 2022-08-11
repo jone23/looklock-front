@@ -6,7 +6,7 @@ import axios from "axios";
 import reducer from '../utils/reducer';
 
 const NavBar = ({currentAccount, correctNetwork, connectWallet, changeNetwork}) => {
-
+    let defaultUser = [{isAdmin:false}];
     const [state, dispatch] = useReducer(reducer, {
         loading: false,
         data: null,
@@ -16,6 +16,7 @@ const NavBar = ({currentAccount, correctNetwork, connectWallet, changeNetwork}) 
     const fetchUser = async (currentAccount) => {
         if (currentAccount === '') {
             console.log("no account yet!");
+            dispatch({type:'SUCCESS', data:defaultUser})
             return
         }
         dispatch({type : 'LOADING'});
@@ -28,9 +29,11 @@ const NavBar = ({currentAccount, correctNetwork, connectWallet, changeNetwork}) 
             console.log(e.response.status);
             if (e.response.status === 404) {
                 try {
-                  const response = await axios.post(
+                  const postResponse = await axios.post(
                     'http://localhost:3001/api/user', {address: currentAccount}
-                  )
+                  );
+                  dispatch({type:'SUCCESS', data:postResponse.data});
+                  return
                 } catch (e) {
                     dispatch({type:'ERROR', error:e})
                 }
@@ -46,8 +49,8 @@ const NavBar = ({currentAccount, correctNetwork, connectWallet, changeNetwork}) 
 
     const {loading, data:user, error } = state;
     if (loading) console.log("loading..");
-    if (error) return <div>요청한 데이터가 없습니다. </div>;
-    if (!user) return <div> no data </div>;
+    if (error) return <div>에러 발생</div>;
+    if (!user) return <div>no data</div>;
     return (
         <>
         <nav id="navbar">
@@ -73,7 +76,7 @@ const NavBar = ({currentAccount, correctNetwork, connectWallet, changeNetwork}) 
                     <li>
                         <Link to="/governance">PARTNER</Link>
                     </li>
-                    {(!!user[0] && user[0].isAdmin) ? (
+                    {( (!!user[0] && user[0].isAdmin)) ? (
                     <li>
                         <Link to="/governance">ADMIN</Link>
                     </li>

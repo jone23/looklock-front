@@ -29,7 +29,7 @@ export default function App() {
           console.log('No Wallet found. Connect Wallet');
       }
 
-      const accounts = await ethereum.request({method: "eth_requestAccounts",});
+      const accounts = await ethereum.request({method: "eth_accounts"});
 
       if (accounts.length !== 0) {
           console.log('Found authorized Account: ', accounts[0]);
