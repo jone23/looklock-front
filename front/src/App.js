@@ -10,6 +10,7 @@ import NoPage from "./pages/NoPage";
 import Project from './pages/Project';
 import Swap from './pages/Swap';
 import MyStatus from './pages/MyStatus';
+import ProjectDetail from './pages/ProjectDetail';
 import Governance from './pages/Governance';
 import About from './pages/About';
 import Admin from './pages/Admin';
@@ -122,6 +123,7 @@ export default function App() {
               ></NavBar>}>
             <Route index element={<Main />} />
             <Route path="project" element={<Project />} />
+            <Route path="projectdetail" element={<ProjectDetail />} />
             <Route path="swap" element={<Swap />} />
             <Route path="about" element={<About ></About>} />
             <Route path="admin" element={<Admin ></Admin>} />
