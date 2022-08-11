@@ -8,8 +8,8 @@ const projectSchema = new mongoose.Schema({
     information: {type:String, required:true}, 
     rewards: [{type: Map, of:Number}],
     startDate: {type: Date, default : null},
-    phase1DueDate: {type:Number, required:true},
-    phase2DueDate: {type:Number,requried:true}  
+    phase1period: {type:Number, required:true},
+    phase2periods: [{type: Map, of : Number}]  
 },
 {
     timestamps: true,
