@@ -35,7 +35,7 @@ export const ProjectInfo= (props) => {
     const getPhase = (project) => {
         const now = new Date().getTime();
         const phase1due = new Date(project.startDate);
-        phase1due.setDate(phase1due.getDate() + Number(project.phase1DueDate));
+        phase1due.setDate(phase1due.getDate() + Number(project.phase1period));
        
         if (now > phase1due.getTime()) return "PHASE2";
         return "PHASE1";
@@ -45,14 +45,14 @@ export const ProjectInfo= (props) => {
     const getPhase1Period = (project) => {
         const startDate =  new Date(project.startDate);
         const endDate = new Date(project.startDate);
-        endDate.setDate(endDate.getDate() + Number(project.phase1DueDate));
+        endDate.setDate(endDate.getDate() + Number(project.phase1period));
 
         return dateFormatter(startDate)+ '~' + dateFormatter(endDate);
     }
 
     const getPhase2Period = (project) => {
       const startDate =  new Date(project.startDate);
-      startDate.setDate(startDate.getDate() +( Number(project.phase1DueDate) +1));
+      startDate.setDate(startDate.getDate() +( Number(project.phase1period) +1));
 
       const endDate = new Date(startDate);
       endDate.setDate(endDate.getDate() + Number(project.phase2DueDate));
