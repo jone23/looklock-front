@@ -6,5 +6,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/api/memo', require('./memo'));
-
+router.use('/api/project', require('./project'));
+router.use('/api/user', require('./user'));
 module.exports = router;

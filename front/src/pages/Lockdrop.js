@@ -1,6 +1,6 @@
 import Footer from '../component/Footer';
-import React, {Component} from 'react';
- 
+import React, { Component } from 'react';
+
 const Lockdrop = () => {
     // DB 연동 필요한 부분: Duration & Rewards
     return(
@@ -43,7 +43,11 @@ const Lockdrop = () => {
             <div class='lockdrop-btn'>
                 <button class="purple-gradient-btn" type="button" id="LockdropPopup">
                     Lockdrop
+                    <div class='lockdrop-success'>
+                    </div>
                 </button>
+
+                
             </div>
         </div>
     );

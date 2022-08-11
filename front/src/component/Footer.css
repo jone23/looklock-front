@@ -1,9 +1,10 @@
 footer{
     width: 100%;
     height: 350px;
-    position : relative;
+    position : absolute;
+    top: 500px;
     background: #181825;
-    margin-bottom: 50px;
+    margin-top: 1800px;
 }
 
 
