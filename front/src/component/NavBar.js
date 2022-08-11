@@ -35,7 +35,7 @@ const NavBar = ({ accounts, setAccounts }) => {
                         <Link to="/swap">SWAP</Link>
                     </li>
                     <li>
-                        <Link to="/mystatus">MY STATUS</Link>
+                        <Link to="/projectdetail">MY STATUS</Link>
                     </li>
                     <li>
                         <Link to="/governance">GOVERNANCE</Link>

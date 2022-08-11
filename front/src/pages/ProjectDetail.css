@@ -1,0 +1,148 @@
+#project-detail-wrapper {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    border: 3px solid yellow;
+}
+
+#zelo-wrapper {
+    width: 50%;
+    border: 3px solid blue;
+}
+
+/* PROJECT NAME SECTION */
+
+#project-name {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    /* width: 50%; */
+    align-items: center;
+    /* border: 3px solid red; */
+}
+
+#zelo-img {
+    width: 100px;
+    height: 100px;
+}
+
+#project-name > h1 {
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0 30px;
+}
+
+#phase1-btn-blur {
+    position: relative;
+    width: 116px;
+    height: 38px;
+    margin-top: -40px;
+    background: #32CAEC;
+    filter: blur(20px);
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    z-index: -1;
+}
+
+#phase1-btn {
+    width: 100px;
+    height: 38px;
+    margin-top: 0px;
+    background: #32CAEC;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* PERIOD */
+#period-box {
+    display: flex;
+    text-align: left;
+}
+
+#period-left {
+    margin-right: 60px;
+    font-weight: 500;
+    color: #6B6B6B;
+}
+
+#period-box > div > ul {
+    padding-inline-start: 0px;
+}
+
+#period-box > div > ul > li {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+/* PARTICIPATION RATE SECTION  */
+#participation-rate {
+    margin-top: 80px;
+    /* border: 3px solid pink; */
+    text-align: left;
+}
+
+#participation-rate > h3 {
+    font-weight: 600;
+    font-size: 20px;
+    color: #D3D3D3;
+}
+
+.outer-box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.inner-box {
+    width: 45%;
+    height: 100px;
+    margin-top: 20px;
+    border: 1px solid #353535;
+    border-radius: 10px;
+}
+
+/* REWARD */
+#reward-wrapper {
+    /* border: 3px solid paleturquoise; */
+    text-align: left;
+    margin-top: 60px;
+}
+
+#reward-box {
+    height: 140px;
+    margin-top: 20px;
+    /* padding-top: 30px; */
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-image: linear-gradient(black, black), 
+    linear-gradient(to right, #9D21FF 0%,  #2254D3
+    100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+#reward-header {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    height: 100px;
+    /* border: 3px solid red; */
+    color: #CDCDCD;
+    flex-direction: column;
+}
+
+/* LOCKUP SECTION */
+
+#lockup-wrapper {
+    width: 50%;
+    background-color: #FFFFFF;
+    border: 3px solid green;
+}

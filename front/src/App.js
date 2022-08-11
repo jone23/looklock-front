@@ -10,6 +10,7 @@ import NoPage from "./pages/NoPage";
 import Project from './pages/Project';
 import Swap from './pages/Swap';
 import MyStatus from './pages/MyStatus';
+import ProjectDetail from './pages/ProjectDetail';
 import Governance from './pages/Governance';
 import About from './pages/About';
 import Admin from './pages/Admin';
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/" element={<NavBar accounts={accounts} setAccounts={setAccounts}></NavBar>}>
             <Route index element={<Main />} />
             <Route path="project" element={<Project />} />
+            <Route path="projectdetail" element={<ProjectDetail />} />
             <Route path="swap" element={<Swap />} />
             <Route path="about" element={<About accounts={accounts} setAccounts={setAccounts}></About>} />
             <Route path="admin" element={<Admin accounts={accounts} setAccounts={setAccounts}></Admin>} />
