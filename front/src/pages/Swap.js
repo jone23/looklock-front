@@ -3,14 +3,10 @@ import './Swap.css';
 import React, { useState } from "react";
 
 const Swap = () => {
-  const [inputs, setInputs] = useState('');
-
-  const {fromAmount, toAmount} = inputs;
+  const [ammounts, setAmmounts] = useState('');
 
   const onChange = (e) => {
-    const {fromAmount, value} = e.target;
-  
-    setInputs(e.target.value);
+    setAmmounts(e.target.value);
   };
 
     return (
@@ -34,7 +30,7 @@ const Swap = () => {
                     <span class='from-token-name'>ETH</span>
                   </div>
                   <div class='amount-input from-amount'>
-                    <input fromAmount="fromAmount" placeholder='0' onChange={onChange} value={fromAmount} type="number"/>
+                    <input fromAmount="fromAmount" placeholder='0' onChange={onChange} value={ammounts} type="number"/>
                   </div>
                 </div>
               </div>
@@ -51,18 +47,20 @@ const Swap = () => {
                     <span class='to-token-name'>LOLO</span>
                   </div>
                   <div class='amount-input to-amount'>
-                    <h1>{fromAmount}</h1>
+                    {ammounts}
                   </div>
                 </div>
               </div>
-            </div>
             
+            </div> {/* end of to-from-wrapper */}
+            <div class='slippage'>
+              <div class='slippage-tolerance'>Slippage Tolerance</div>
+              <div calss='slippage-ammount'>0.5%</div>
+            </div>
             <button class="purple-gradient-btn" type="button" id="swap-btn">
               Swap
             </button>
-
-
-          </div>
+          </div>  {/* end of swap-wrapper */}
         </div>
         <Footer/>
       </body>

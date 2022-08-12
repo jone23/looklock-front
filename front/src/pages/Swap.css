@@ -1,58 +1,68 @@
 .swap-container {
     display: flex;
+    width: 80vw;
 }
 .swap-graph {
     position: absolute;
-    margin-left: 10%;
+    margin-left: 15vw;
     /* display: inline-flex; */
     flex-direction: row;
     flex-wrap: wrap;
-    top: 250px;
+    top: 25vh;
 }
 
 #swap-graph-img {
-    width: 100%;
+    width: 30vw;
+    border-color: aliceblue;
+    border: solid;
 }
 .swap-wrapper {
     position: absolute;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     flex-wrap: wrap;
     /* box */
-    height: 70%;
-    width: 29%;
-    left: 52%;
-    top: 248px;
+    height: 70vh;
+    width: 30vw;
+    left: 50vw;
+    top: 20vh;
     border: none;
     cursor: pointer;
-    padding: 12px 55px;
+    padding: 1.75vh 3vw;
     background: #23233F;
     border-radius: 20px;
 }
 
 .swap-wrapper > h1 {
     position: absolute;
-    top: 5%;
+    top: 4vh;
 }
 
-.to-from-wrapper {
-    margin-top: 40px;
+.to-from-wrapper { 
+    width: 35vw;
+    height: 46vh;
+    /* margin-top: 8vh; */
+    justify-content: center;
+    align-items: center;
+    top: 25vh;
 } 
 
 .token-wrapper {
     position: absolute;
     display: flex;
+    justify-content: center;
+    align-items: center;
     /* flex-direction: row; */
-    margin: 30px 0;
+    margin: 3vh 0vw;
     border: none;
     cursor: pointer;
-    padding: 12px 55px;
+    padding: 1.5vh 3.5vw;
     background: #12122B;
     border-radius: 20px;
-    left: 6%;
-    top: 10%;
-    width: 70%;
-    height: 18%;
+    left: 2vw;
+    top: 10vh;
+    width: 25vw;
+    height: 13vh;
 }
 
 .from-wrapper {
@@ -60,10 +70,10 @@
 }
 
 .swap-txt {
-    font-size: 120%;
+    font-size: 1.25em;
     position: absolute;
-    left: 7%;
-    top: 8%;
+    left: 2vw;
+    top: 2vh;
     /* display: inline-block; */
 }
 
@@ -73,44 +83,37 @@
     align-items: center;
 }
 
-/* .from-token > span {
-    position: absolute;
-    width: 60px;
-    top: 55px;
-    left: 30px; 
-} */
-
 .from-token > span > #swap-from-eth {
     position: absolute;
-    width: 50px;
-    left: 8%;
-    top: 40%;
+    width: 3vw;
+    left: 2.5vw;
+    top: 6.5vh;
 }
 
 .from-token-name {
     position: absolute;
-    left: 22%;
-    top: 45%;
-    font-size: 28px;
+    left: 7vw;
+    top: 7.8vh;
+    font-size: 1.75em;
 }
 
 .amount-input {
     position: absolute;
-    top: 45%;
-    right: 10px;
+    top: 7.5vh;
+    right: 1vw;
     
     margin-left: auto;
     outline: none;
 }
 
 .amount-input > input {
-    width: 150px;
-    margin-right: 10px;
+    width: 10vw;
+    margin-right: 1vw;
     text-align: right;
     color: #5B5B5B;
     background-color: transparent;
     border: none;
-    font-size: 28px;
+    font-size: 1.75em;
 
 }
 
@@ -121,46 +124,66 @@
     border-right: 2px solid #A9A9A9;
 
     transform: rotate(135deg);
-    width: 25px;
-    height: 25px;
-    top: 37%;
-    left: 50%;
+    width: 2vw;
+    height: 2vw;
+    top: 30vh;
+    left: 17vw;
 }
 
 .to-wrapper {
     position: absolute;
-    top: 40%;
+    top: 35vh;
 }
 .to-token > span > #swap-to-lolo {
     position: absolute;
-    width: 50px;
-    left: 8%;
-    top: 40%;
+    width: 3vw;
+    left: 2.5vw;
+    top: 6.5vh;
 }
 
 .to-token-name {
     position: absolute;
-    left: 22%;
-    top: 45%;
-    font-size: 28px;
+    left: 7vw;
+    top: 7.8vh;
+    font-size: 1.75em;
 }
 
-.amount-input to-amount {
-    width: 150px;
-    margin-right: 10px;
+.to-amount {
+    width: 10vw;
+    margin-right: 1.5vw;
     text-align: right;
     color: #5B5B5B;
     background-color: transparent;
     border: none;
-    font-size: 28px;
+    font-size: 1.75em;
+    
 }
 
+.slippage {
+    position: absolute;
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+    width: 30vw;
+    height: 5vh;
+    top: 59.5vh;
+    left: 2.75vw;
+    font-size: 1..25em;
+}
+
+.slippage-tolerance {
+    left: 2vw;
+    top: 10vh;
+    color: #CDCDCD;
+}
 #swap-btn {
     position: absolute;
-    top: 80%;
-    left: 9.5%;
-    right: 38px;
-    bottom: 1%;
-    width: 80%;
-    height: 86px;
+    align-items: center;
+
+    top: 61vh;
+    left: 3vw;
+    right: 20vw;
+    bottom: 1vh;
+    width: 30vw;
+    height: 6vh;
 }
