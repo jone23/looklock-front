@@ -26,7 +26,6 @@ const NavBar = ({currentAccount, correctNetwork, connectWallet, changeNetwork}) 
             );
             dispatch({type:'SUCCESS', data:response.data});
         } catch (e) {
-            console.log(e.response.status);
             if (e.response.status === 404) {
                 try {
                   const postResponse = await axios.post(
@@ -49,7 +48,7 @@ const NavBar = ({currentAccount, correctNetwork, connectWallet, changeNetwork}) 
 
     const {loading, data:user, error } = state;
     if (loading) console.log("loading..");
-    if (error) return <div>에러 발생</div>;
+    if (error) return <div>error</div>;
     if (!user) return <div>no data</div>;
     return (
         <>
