@@ -93,7 +93,7 @@ const Swap = () => {
             </button>
             <Modal open={modalOpen} close={closeModal} header="Alert">
               { /*Success*/}
-              <img id="swap-success-img" src={require('../Assets/success-alert.png')} alt="Swap-Success" />      
+              <img id="swap-success-img" src={require('../Assets/fail-alert.png')} alt="Swap-Success" />      
               <div class='swap-success'>
                 <button class="success-btn" type="button" id="swap-success-btn" onClick={closeModal}>
                   Done

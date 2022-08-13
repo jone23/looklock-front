@@ -27,7 +27,7 @@
     left: 50vw;
     top: 20vh;
     border: none;
-    cursor: pointer;
+    /* cursor: pointer; */
     padding: 1.75vh 3vw;
     background: #23233F;
     border-radius: 20px;
