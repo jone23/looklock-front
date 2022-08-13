@@ -3,6 +3,7 @@ import './Swap.css';
 import React, { useState } from "react";
 import {ethers} from "ethers";
 import Lolo from "../contracts/Lolo.json";
+import Modal from '../pages/Modal';
 
 
 const Swap = () => {
@@ -20,12 +21,24 @@ const Swap = () => {
       const lolo = new ethers.Contract(contractAddress, Lolo.abi, signer);
 
       let swapTx = await lolo.swapForTest(amounts);
+
+      const openModal = () => {
+        setModalOpen(true);
+      };
     }catch {
       console.log("Error while swapping");
     }
-    
-    
   };
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+//  const openModal = () => {
+//    setModalOpen(true);
+//  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
 
     return (
       <body>
@@ -73,11 +86,20 @@ const Swap = () => {
             </div> {/* end of to-from-wrapper */}
             <div class='slippage'>
               <div class='slippage-tolerance'>Slippage Tolerance</div>
-              <div calss='slippage-ammount'>0.5%</div>
+              <div class='slippage-ammount'>0.5%</div>
             </div>
-            <button class="purple-gradient-btn" type="button" id="swap-btn" onClick={handleSwap} >
+            <button class="purple-gradient-btn" type="button" id="swap-btn" onClick={handleSwap}>
               Swap
             </button>
+            <Modal open={modalOpen} close={closeModal} header="Alert">
+              { /*Success*/}
+              <img id="swap-success-img" src={require('../Assets/success-alert.png')} alt="Swap-Success" />      
+              <div class='swap-success'>
+                <button class="success-btn" type="button" id="swap-success-btn" onClick={closeModal}>
+                  Done
+                </button>
+              </div>    
+            </Modal>
           </div>  {/* end of swap-wrapper */}
         </div>
         <Footer/>
