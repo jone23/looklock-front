@@ -3,7 +3,7 @@ import './ProjectDetail.css';
 import Timer from '../components/Timer';
 import BarGraph from '../components/BarGraph'; 
 import { dateFormatter } from "../utils/dateFromatter";
-import React, {useReducer, useState, useEffect} from "react";
+import React, {useReducer, useState, useEffect, useMemo} from "react";
 import axios from "axios";
 import reducer from "../utils/reducer";
 
@@ -11,6 +11,9 @@ const ProjectDetail = (props) => {
     const [currentPhase, setCurrentPhase] = useState('');
     const [selectedDays, setSelectedDays] = useState(0);
     const [amounts, setAmmounts] = useState('');
+    // const [phase1Due, setPhase1Due] = useState(new Date());
+    // const [phase2Due, setPhase2Due] = useState(new Date());
+    // const [dueDate, setDueDate] = useState(new Date());
 
     const [state, dispatch] = useReducer(reducer, {
         loading: false,
@@ -44,29 +47,47 @@ const ProjectDetail = (props) => {
         const phase1due = new Date(project.startDate);
         phase1due.setDate(phase1due.getDate() + Number(project.phase1period));
        
-        if (now > phase1due.getTime()) return "PHASE 2";
+        if (now > phase1due.getTime()) {
+            return "PHASE 2";
+        }
         return "PHASE 1";
 
-    }
+    };
+
+    const getDueDate = (project) =>{
+        if (currentPhase === "PHASE 1") {
+            const endDate = new Date(project.startDate);
+            endDate.setDate(endDate.getDate() + Number(project.phase1period));
+            return endDate;
+        }
+        else {
+            const startDate =  new Date(project.startDate);
+            startDate.setDate(startDate.getDate() +( Number(project.phase1period) +1));
+            const sum = project.phase2periods.reduce((partialsum, item) => partialsum + item.days, 0);
+            const endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + sum);
+            return endDate;
+        }
+    };
+
 
     const getPhase1Period = (project) => {
         const startDate =  new Date(project.startDate);
         const endDate = new Date(project.startDate);
         endDate.setDate(endDate.getDate() + Number(project.phase1period));
-
+        //setPhase1Due(endDate);
         return dateFormatter(startDate)+ '~' + dateFormatter(endDate);
-    }
+    };
 
-    const getPhase2Period = (project) => {
-      const startDate =  new Date(project.startDate);
-      startDate.setDate(startDate.getDate() +( Number(project.phase1period) +1));
-      const sum = project.phase2periods.reduce((partialsum, item) => partialsum + item.days, 0);
-      console.log(sum);
-      const endDate = new Date(startDate);
-      endDate.setDate(endDate.getDate() + sum);
-
-      return dateFormatter(startDate)+ '~' + dateFormatter(endDate);
-    }
+    const getPhase2Period =(project) => {
+        const startDate =  new Date(project.startDate);
+        startDate.setDate(startDate.getDate() +( Number(project.phase1period) +1));
+        const sum = project.phase2periods.reduce((partialsum, item) => partialsum + item.days, 0);
+        const endDate = new Date(startDate);
+        endDate.setDate(endDate.getDate() + sum);
+        //setPhase2Due(endDate);
+        return dateFormatter(startDate)+ '~' + dateFormatter(endDate);
+    };
 
     const reformatPhase2Period = (project) => {
         let result = [];
@@ -96,7 +117,7 @@ const ProjectDetail = (props) => {
     if (!project) return <div> no data </div>;
 
     return (
-        <body>
+        <div>
             <div id='project-detail-wrapper'>
                 <div id='zelo-wrapper'>
                     <div id='project-name'>
@@ -230,9 +251,9 @@ const ProjectDetail = (props) => {
                 <div id='lockup-wrapper'>
                     <div id='lockup-container'>
                         <div id='timer-wrapper'>
-                            <Timer/>
+                            <Timer duedate="Jan 5, 2024 15:37:25"/>
                             <div>
-                                <span id='phase1'>PHASE 1</span>
+                                <span id='phase1'>{getPhase(project[0])}</span>
                                 <span id='timeleft'>TIME LEFT IN THIS PHASE</span>
                             </div>
                         </div>
@@ -313,8 +334,8 @@ const ProjectDetail = (props) => {
                     <br></br> <br></br>
                     {reformatPhase2Period(project[0]).map((item) => 
                     <>
-                    <div>{item}</div>
-                    <br></br>
+                    <span>{item}</span>
+                    <br></br><br></br>
                     </>)}
                     </p>
                     
@@ -369,7 +390,7 @@ const ProjectDetail = (props) => {
                 </div>
             </div>
             <Footer/>
-        </body>
+        </div>
     )
 };
   
