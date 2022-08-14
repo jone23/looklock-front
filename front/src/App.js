@@ -123,7 +123,7 @@ export default function App() {
               ></NavBar>}>
             <Route index element={<Main />} />
             <Route path="project" element={<Project />} />
-            <Route path="projectdetail" element={<ProjectDetail />} />
+            <Route path="projectdetail" element={<ProjectDetail title="Look"/>} />
             <Route path="swap" element={<Swap />} />
             <Route path="about" element={<About ></About>} />
             <Route path="admin" element={<Admin ></Admin>} />

@@ -2,19 +2,111 @@ import Footer from "../component/Footer";
 import './ProjectDetail.css';
 import Timer from '../components/Timer';
 import BarGraph from '../components/BarGraph'; 
+import { dateFormatter } from "../utils/dateFromatter";
+import React, {useReducer, useState, useEffect} from "react";
+import axios from "axios";
+import reducer from "../utils/reducer";
 
-const ProjectDetail = () => {
+const ProjectDetail = (props) => {
+    const [currentPhase, setCurrentPhase] = useState('');
+    const [selectedDays, setSelectedDays] = useState(0);
+    const [amounts, setAmmounts] = useState('');
+
+    const [state, dispatch] = useReducer(reducer, {
+        loading: false,
+        data: null,
+        error: null
+    });
+
+    const fetchProject = async () => {
+        dispatch({type : 'LOADING'});
+        try {
+            const response = await axios.get(
+                'http://localhost:3001/api/project', {params: {title: props.title}}
+            );
+            dispatch({type:'SUCCESS', data:response.data});
+            
+            await setCurrentPhase(getPhase(response.data[0]))
+        } catch (e) {
+            dispatch({type :'ERROR', error:e})
+        }
+    };
+
+
+    useEffect(()=> {
+        fetchProject(props.title);
+    },[]);
+
+    const {loading, data:project, error } = state;
+
+    const getPhase = (project) => {
+        const now = new Date().getTime();
+        const phase1due = new Date(project.startDate);
+        phase1due.setDate(phase1due.getDate() + Number(project.phase1period));
+       
+        if (now > phase1due.getTime()) return "PHASE 2";
+        return "PHASE 1";
+
+    }
+
+    const getPhase1Period = (project) => {
+        const startDate =  new Date(project.startDate);
+        const endDate = new Date(project.startDate);
+        endDate.setDate(endDate.getDate() + Number(project.phase1period));
+
+        return dateFormatter(startDate)+ '~' + dateFormatter(endDate);
+    }
+
+    const getPhase2Period = (project) => {
+      const startDate =  new Date(project.startDate);
+      startDate.setDate(startDate.getDate() +( Number(project.phase1period) +1));
+      const sum = project.phase2periods.reduce((partialsum, item) => partialsum + item.days, 0);
+      console.log(sum);
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + sum);
+
+      return dateFormatter(startDate)+ '~' + dateFormatter(endDate);
+    }
+
+    const reformatPhase2Period = (project) => {
+        let result = [];
+        let startDate =  new Date(project.startDate);
+        startDate.setDate(startDate.getDate() +( Number(project.phase1period) +1));
+        
+        project.phase2periods.map((item) => {
+            let endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + item.days -1);
+            result.push(dateFormatter(startDate)+ ' ~ ' + dateFormatter(endDate) + ' ---------- ' + item.percent + '%');
+            startDate.setDate(endDate.getDate() + 1);
+        })
+
+        return result
+    }
+
+    const handleClick = e => {
+        setSelectedDays(parseInt(e.target.value));
+    };
+
+    const handleInput = e => {
+        setAmmounts(e.target.value);
+    }
+
+    if (loading) console.log("loading..");
+    if (error) return <div>요청한 데이터가 없습니다. </div>;
+    if (!project) return <div> no data </div>;
+
     return (
         <body>
             <div id='project-detail-wrapper'>
                 <div id='zelo-wrapper'>
                     <div id='project-name'>
                         <div>
+                            {/* 이미지는 나중에 */}
                             <img id="zelo-img" src={require('../Assets/profile.png')} alt="chain-left"/>
                         </div>
-                        <h1>ZELO</h1>
+                        <h1>{project[0].title}</h1>
                         <div>
-                            <button id='phase1-btn'>Phase 1</button>
+                            <button id='phase1-btn'>{currentPhase}</button>
                             {/* <div id='phase1-btn-blur'></div> */}
                         </div>
                     </div>
@@ -29,28 +121,33 @@ const ProjectDetail = () => {
                         <div id='period-right'>
                             <ul>
                                 <li>
-                                    <div id='period-phase1'>
+                                    <div id='period-phase1' class={currentPhase === "PHASE 1" ? '' : 'notyet'}>
                                         <span>Phase 1</span>
-                                        <span>2022.04.01 ~ 04.09.</span>
+                                        <span>{getPhase1Period(project[0])}</span>
                                         <div class='dotnow'>
-                                            <span class='dot'></span>
-                                            <span class='now'>now</span>
+                                            <span class= {currentPhase === "PHASE 1" ? 'dot' : 'dot hidden'}></span>
+                                            <span class={currentPhase === "PHASE 1" ? 'now' : 'now hidden-txt'}>now</span>
                                         </div>
                                     </div>
-                                    <div id='period-phase2' class='notyet'>
+                                    <div id='period-phase2' class={currentPhase === "PHASE 2" ? '' : 'notyet'}>
                                         <span>Phase 2</span>
-                                        <span>2022.04.10 ~ 05.15.</span>
+                                        <span>{getPhase2Period(project[0])}</span>
                                         <div class='dotnow'>
-                                            <span class='dot hidden'></span>
-                                            <span class='now hidden-txt'>now</span>
+                                            <span class={currentPhase === "PHASE 2" ? 'dot' : 'dot hidden'}></span>
+                                            <span class={currentPhase === "PHASE 2" ? 'now' : 'now hidden-txt'}>now</span>
                                         </div>
                                     </div>
                                 </li>
-                                <li>30 / 60 / 90 / 120 days</li>
+                                <li>{project[0].rewards.map( (item) => 
+                                    item.days + " / "
+                            )} days</li>
+                                {/* 총 allocated-amount :  onchain data -> register 작업 후 */}
                                 <li>3,000,000,000</li>
                             </ul>
                         </div>
                     </div>
+
+                    {/* onchain 정보 필요 --> register 작업 후*/}
                     <div id='participation-rate'>
                         <h3>Participation Rate per Days</h3>
                         <div class='outer-box'>
@@ -110,6 +207,7 @@ const ProjectDetail = () => {
                             </div>
                         </div>
                     </div>
+
                     <div id='reward-wrapper'>
                         <h3>Rewards</h3>
                         <div id='reward-box'>
@@ -118,26 +216,17 @@ const ProjectDetail = () => {
                                 <span>Multiplier</span>
                             </div>
                             <div id='reward-body'>
-                                <div class='vertical 1of4'>
-                                    <span class='reward-days'>30</span>
-                                    <span class='reward-multi'>1x</span>
-                                </div>
-                                <div class='vertical 2of4'>
-                                    <span class='reward-days'>30</span>
-                                    <span class='reward-multi'>1x</span>
-                                </div>
-                                <div class='vertical 3of4'>
-                                    <span class='reward-days'>30</span>
-                                    <span class='reward-multi'>1x</span>
-                                </div>
-                                <div class='vertical 4of4'>
-                                    <span class='reward-days'>30</span>
-                                    <span class='reward-multi'>1x</span>
-                                </div>
+                                {project[0].rewards.map( (item) => 
+                                    <div class='vertical'>
+                                        <span class='reward-days'>{item.days}</span>
+                                        <span class='reward-multi'>{item.boost}x</span>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div id='lockup-wrapper'>
                     <div id='lockup-container'>
                         <div id='timer-wrapper'>
@@ -155,13 +244,14 @@ const ProjectDetail = () => {
                                     <span>Amount</span>
                                     <div>
                                         <span>In wallet: </span>
+                                        {/* data from wallet */}
                                         <span>900</span>
                                     </div>
                                 </div>
                                 <div id='amount-input-container'>
                                     <span>LOLO</span>
                                     <div class='flex-right'>
-                                        <input type='text' name='amount-area' value='700' id='amount-input-area'></input>
+                                        <input type='text' name='amount-area' placeholder="0" value={amounts} onChange={handleInput} id='amount-input-area'></input>
                                         <span>MAX</span>
                                     </div>
                                 </div>
@@ -170,10 +260,10 @@ const ProjectDetail = () => {
                             <div id='duration-container'>
                                 <span>Duration (days)</span>
                                 <div id='duration-btn-container'>
-                                    <button class='duration-btn btnselected'>30</button>
-                                    <button class='duration-btn'>60</button>
-                                    <button class='duration-btn'>90</button>
-                                    <button class='duration-btn'>120</button>
+                                    {project[0].rewards.map( (item) => 
+                                    <button class={item.days===selectedDays ? 'duration-btn btnselected' : 'duration-btn'} 
+                                    value = {item.days} onClick={handleClick}>{item.days}</button>
+                                )}
                                 </div>
                             </div>
                             <div id='est-container'>
@@ -214,6 +304,20 @@ const ProjectDetail = () => {
                 <br/><br/>
                 🐦 Twitter | 💬 Telegram
                 </p>
+                </div>
+                <div id='period-info'>
+                    <p>Phase 1  {getPhase1Period(project[0])}
+                    <br/><br/>
+                    Phase 2  {getPhase2Period(project[0])}</p>
+                    <p>Withdrawable percentage in phase 2 :
+                    <br></br> <br></br>
+                    {reformatPhase2Period(project[0]).map((item) => 
+                    <>
+                    <div>{item}</div>
+                    <br></br>
+                    </>)}
+                    </p>
+                    
                 </div>
                 <div id='desclaimer'>
                 <h3>Disclaimer</h3>
