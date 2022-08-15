@@ -9,6 +9,18 @@ import Modal from '../pages/Modal';
 const Swap = () => {
   const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
   const [amounts, setAmmounts] = useState('');
+  // const [modalOpen, setModalOpen] = useState(false);
+  // Modal control
+  const open = document.getElementById("openModal");
+  const close = document.getElementById("closeModal");
+  const modal = document.querySelector(".modal-wrapper");
+
+  open.onclick = () => {
+    modal.style.display = "flex";
+  };
+  close.onclick = () => {
+    modal.style.display = "none";
+  };
 
   const onChange = (e) => {
     setAmmounts(e.target.value);
@@ -22,22 +34,22 @@ const Swap = () => {
 
       let swapTx = await lolo.swapForTest(amounts);
 
-      const openModal = () => {
-        setModalOpen(true);
-      };
+      // const openModal = () => {
+      //   setModalOpen(true);
+      // };
     }catch {
       console.log("Error while swapping");
     }
   };
 
-  const [modalOpen, setModalOpen] = useState(false);
-
 //  const openModal = () => {
 //    setModalOpen(true);
 //  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  // const closeModal = () => {
+  //   setModalOpen(false);
+  // };
+
+
 
 
     return (
@@ -61,7 +73,7 @@ const Swap = () => {
                     <span class='from-token-name'>ETH</span>
                   </div>
                   <div class='amount-input from-amount'>
-                    <input fromAmount="fromAmount" placeholder='0' onChange={onChange} value={amounts} type="number"/>
+                    <input fromAmount="fromAmount" min='0' placeholder='0' onChange={onChange} value={amounts} type="number"/>
                   </div>
                 </div>
               </div>
@@ -81,25 +93,27 @@ const Swap = () => {
                     {amounts}
                   </div>
                 </div>
-              </div>
-            
+              </div>     
             </div> {/* end of to-from-wrapper */}
+
             <div class='slippage'>
               <div class='slippage-tolerance'>Slippage Tolerance</div>
               <div class='slippage-ammount'>0.5%</div>
             </div>
-            <button class="purple-gradient-btn" type="button" id="swap-btn" onClick={handleSwap}>
+            <button class="purple-gradient-btn" type="button" id="openModal" onClick={handleSwap}>
               Swap
             </button>
-            <Modal open={modalOpen} close={closeModal} header="Alert">
+            <div class="modal-wrapper" style="display: none;">
               { /*Success*/}
-              <img id="swap-success-img" src={require('../Assets/fail-alert.png')} alt="Swap-Success" />      
-              <div class='swap-success'>
-                <button class="success-btn" type="button" id="swap-success-btn" onClick={closeModal}>
-                  Done
-                </button>
-              </div>    
-            </Modal>
+              <div class="modal success-modal">
+                <img id="swap-success-img" src={require('../Assets/lockdrop-success-alert.png')} alt="Swap-Success" />      
+                <div class='swap-success'>
+                  <button class="success-btn" type="button" id="closeModal">
+                    Done
+                  </button>
+                </div>    
+              </div>
+            </div>
           </div>  {/* end of swap-wrapper */}
         </div>
         <Footer/>
