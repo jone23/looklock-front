@@ -38,6 +38,7 @@ Examples of which features are powered by LookLock include:
 * Expose new projects to users interested in Lockdrop
    
 ## Teams
+Ewha Womans University Team  
 | Minji Koh | Jisoo Yoo | Hyeonseo Ryu | Jewon Huh | Jaeyeon Kim |  Jimin Kim  |
 |:---------:|:---------:|:------------:|:---------:|:-----------:|:-----------:|
 | Developer |     PM    |   Designer   |     PM    |  Developer  |  Developer  |
